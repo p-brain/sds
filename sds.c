@@ -39,6 +39,10 @@
 #include "sds.h"
 #include "sdsalloc.h"
 
+#pragma warning(push)
+#pragma warning(disable : 4244)
+
+
 const char *SDS_NOINIT = "SDS_NOINIT";
 
 static inline int sdsHdrSize(char type) {
@@ -1290,3 +1294,7 @@ int main(void) {
     return sdsTest();
 }
 #endif
+
+
+#pragma warning(pop)
+
