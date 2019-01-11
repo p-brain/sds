@@ -233,7 +233,7 @@ typedef char *sds;
 		}
 	}
 
-	sds sdsnewlen( const void *init, size_t initlen );
+	sds sdsnewlen( const char *init, size_t initlen );
 	sds sdsnew( const char *init );
 	sds sdsempty( void );
 	sds sdsdup( const sds s );
@@ -267,7 +267,7 @@ typedef char *sds;
 	sds sdscatrepr( sds s, const char *p, size_t len );
 	sds *sdssplitargs( const char *line, int *argc );
 	sds sdsmapchars( sds s, const char *from, const char *to, size_t setlen );
-	sds sdsjoin( char **argv, int argc, char *sep );
+	sds sdsjoin( char **argv, int argc, const char *sep );
 	sds sdsjoinsds( sds *argv, int argc, const char *sep, size_t seplen );
 
 	/* Low level functions exposed to the user API */
