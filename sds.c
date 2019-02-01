@@ -39,6 +39,27 @@
 #include "sds.h"
 #include "sdsalloc.h"
 
+
+ // Check windows
+#if _WIN32 || _WIN64
+#if _WIN64
+#define OSBITS 64
+#else
+#define OSBITS 32
+#endif
+#endif
+
+// Check GCC
+#if __GNUC__
+#if __x86_64__ || __ppc64__
+#define OSBITS 64
+#else
+#define OSBITS 32
+#endif
+#endif
+
+
+
 #pragma warning(push)
 #pragma warning(disable : 4244)
 
@@ -68,7 +89,7 @@ static inline char sdsReqType(size_t string_size) {
         return SDS_TYPE_8;
     if (string_size < 1<<16)
         return SDS_TYPE_16;
-#if (LONG_MAX == LLONG_MAX)
+#if (OSBITS == 64)
     if (string_size < 1ll<<32)
         return SDS_TYPE_32;
     return SDS_TYPE_64;

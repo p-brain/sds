@@ -113,8 +113,10 @@ typedef char *sds;
 			return SDS_HDR( 16, s )->len;
 		case SDS_TYPE_32:
 			return SDS_HDR( 32, s )->len;
+#if ( OSBITS == 64)
 		case SDS_TYPE_64:
 			return SDS_HDR( 64, s )->len;
+#endif
 		}
 		return 0;
 	}
@@ -137,10 +139,12 @@ typedef char *sds;
 			SDS_HDR_VAR( 32, s );
 			return sh->alloc - sh->len;
 		}
+#if ( OSBITS == 64)
 		case SDS_TYPE_64: {
 			SDS_HDR_VAR( 64, s );
 			return sh->alloc - sh->len;
 		}
+#endif
 		}
 		return 0;
 	}
@@ -163,9 +167,11 @@ typedef char *sds;
 		case SDS_TYPE_32:
 			SDS_HDR( 32, s )->len = newlen;
 			break;
+#if ( OSBITS == 64)
 		case SDS_TYPE_64:
 			SDS_HDR( 64, s )->len = newlen;
 			break;
+#endif
 		}
 	}
 
@@ -206,8 +212,10 @@ typedef char *sds;
 			return SDS_HDR( 16, s )->alloc;
 		case SDS_TYPE_32:
 			return SDS_HDR( 32, s )->alloc;
+#if ( OSBITS == 64)
 		case SDS_TYPE_64:
 			return SDS_HDR( 64, s )->alloc;
+#endif
 		}
 		return 0;
 	}
@@ -227,9 +235,11 @@ typedef char *sds;
 		case SDS_TYPE_32:
 			SDS_HDR( 32, s )->alloc = newlen;
 			break;
+#if ( OSBITS == 64)
 		case SDS_TYPE_64:
 			SDS_HDR( 64, s )->alloc = newlen;
 			break;
+#endif
 		}
 	}
 
