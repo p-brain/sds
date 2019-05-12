@@ -30,15 +30,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <assert.h>
-#include <limits.h>
-#include "sds.h"
-#include "sdsalloc.h"
-
 
  // Check windows
 #if _WIN32 || _WIN64
@@ -57,6 +48,18 @@
 #define OSBITS 32
 #endif
 #endif
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <assert.h>
+#include <limits.h>
+
+#include "sds.h"
+#include "sdsalloc.h"
+ 
 
 
 
